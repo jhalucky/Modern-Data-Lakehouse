@@ -1,4 +1,4 @@
-def drop_duplicates(df):
+def validate_duplicates(df):
 
     total_rows = df.count()
 
