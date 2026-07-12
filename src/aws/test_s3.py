@@ -5,10 +5,10 @@ try:
 
     client = get_s3_client()
 
-    response = client.list_buckets()
+    buckets = client.list_buckets()
 
-    for bucket in response['Buckets']:
-        print(bucket['Name'])
+    for bucket in buckets['Buckets']:
+        print(bucket['Name'], bucket[""])
 
 
 except ClientError as e:
