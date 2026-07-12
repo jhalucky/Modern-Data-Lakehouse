@@ -1,7 +1,9 @@
 from src.bronze.bronze_pipeline import load_bronze_tables
 from src.spark.spark_session import get_spark_session
 from src.validation.null_validator import validate_nulls
-from src.validation.duplicate_validator import drop_duplicates
+# from src.validation.duplicate_validator import validate_duplicates
+from src.validation.schema_validator import schema_validator
+from schemas import CUSTOMER_SCHEMA
 
 spark = get_spark_session()
 
@@ -13,7 +15,8 @@ orders = tables["orders"]
 
 # null_report = validate_nulls(customers)
 # null_report = validate_nulls(orders)
-duplicate_report = drop_duplicates(customers)
+# duplicate_report = drop_duplicates(customers)
+# schema_report = schema_validator(customers, CUSTOMER_SCHEMA)
 
 
 # for name, df in tables.items():
@@ -22,4 +25,18 @@ duplicate_report = drop_duplicates(customers)
 #     df.printSchema()
 #     df.show(5)
 
-duplicate_report.show()
+# print(f"Schema test passed or failed: {schema_report}")
+
+actual_schema = {
+        field.name: field.dataType.simpleString()
+        for field in customers.schema.fields
+    }
+
+    
+
+# print(type(CUSTOMER_SCHEMA))
+# print(customers.columns)
+# print(list(CUSTOMER_SCHEMA.keys()))
+
+print(actual_schema)
+print(CUSTOMER_SCHEMA)
