@@ -16,27 +16,19 @@ orders = tables["orders"]
 # null_report = validate_nulls(customers)
 # null_report = validate_nulls(orders)
 # duplicate_report = drop_duplicates(customers)
-# schema_report = schema_validator(customers, CUSTOMER_SCHEMA)
+schema_report = schema_validator(customers, CUSTOMER_SCHEMA)
 
 
-# for name, df in tables.items():
-#     print("="*50)
-#     print(name.upper())
-#     df.printSchema()
-#     df.show(5)
+for name, df in tables.items():
+    print("="*50)
+    print(name.upper())
+    df.printSchema()
+    df.show(5)
 
-# print(f"Schema test passed or failed: {schema_report}")
+print(f"Schema test passed or failed: {schema_report}")
 
-actual_schema = {
-        field.name: field.dataType.simpleString()
-        for field in customers.schema.fields
-    }
 
     
 
-# print(type(CUSTOMER_SCHEMA))
-# print(customers.columns)
-# print(list(CUSTOMER_SCHEMA.keys()))
 
-print(actual_schema)
-print(CUSTOMER_SCHEMA)
+
