@@ -1,6 +1,7 @@
 from src.bronze.bronze_pipeline import load_bronze_tables
 from src.spark.spark_session import get_spark_session
 from src.validation.null_validator import validate_nulls
+from src.validation.duplicate_validator import drop_duplicates
 
 spark = get_spark_session()
 
@@ -8,7 +9,11 @@ tables = load_bronze_tables(spark)
 
 customers = tables["customers"]
 
-null_report = validate_nulls(customers)
+orders = tables["orders"]
+
+# null_report = validate_nulls(customers)
+# null_report = validate_nulls(orders)
+duplicate_report = drop_duplicates(customers)
 
 
 # for name, df in tables.items():
@@ -17,4 +22,4 @@ null_report = validate_nulls(customers)
 #     df.printSchema()
 #     df.show(5)
 
-null_report.show()
+duplicate_report.show()
