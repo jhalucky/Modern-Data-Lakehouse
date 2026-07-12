@@ -8,4 +8,4 @@ def validate_duplicate_primary_keys(df, column_name):
 
     print(f"Duplicate primary key rows: {duplicate_rows}")
 
-    
+    return duplicate_rows
