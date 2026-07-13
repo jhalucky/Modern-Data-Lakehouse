@@ -8,4 +8,6 @@ def cast_datatypes(df, schema):
             col(column).cast(datatype)
         )
 
+    print("Datatypes casted!")
+
     return df
