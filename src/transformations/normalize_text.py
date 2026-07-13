@@ -1,17 +1,18 @@
-from pyspark.sql.functions import col, upper, lower, initcap
+from pyspark.sql.functions import col, initcap
 from pyspark.sql.types import StringType
 
 def normalize_text(df):
 
-    for column in df.schema:
+    for field in df.schema.fields:
 
-        if isinstance(column.dataType, StringType):
+        if isinstance(field.dataType, StringType):
 
-            if column.name == "customer_state":
-                df = df.withColumn(
-                    column.name,
-                    upper(col(column.name))
-                )
+            df = df.withColumn(
+                field.name,
+                initcap(col(field.name))
+            )
 
-            
+    print("Text normalized")
+
+    return df
 
