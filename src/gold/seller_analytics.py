@@ -45,18 +45,9 @@ def build_seller_analytics(spark):
     )
 
     print("Sellers Analysis Done!")
-    sellers_gold.show(5)
+    
 
     return sellers_gold
 
 
 
-def main():
-
-    spark = get_spark_session()
-
-    build_seller_analytics(spark)
-
-
-if __name__ == "__main__":
-    main()

@@ -62,13 +62,3 @@ def build_clv_analytics(spark):
     print("Analysis done")
     return clv_gold
 
-
-def main():
-
-    spark = get_spark_session()
-
-    build_clv_analytics(spark)
-
-
-if __name__ == "__main__":
-    main()

@@ -56,12 +56,3 @@ def build_product_analytics(spark):
 
     return product_gold
 
-def main():
-
-    spark = get_spark_session()
-
-    build_product_analytics(spark)
-
-
-if __name__ == "__main__":
-    main()

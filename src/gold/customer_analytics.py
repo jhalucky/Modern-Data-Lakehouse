@@ -5,7 +5,8 @@ from pyspark.sql.functions import (
     sum,
     avg,
     min,
-    max
+    max,
+    round
 )
 
 
@@ -58,13 +59,3 @@ def build_customer_analytics(spark):
     print("Customer analysis done!")
     return customer_gold
 
-
-def main():
-
-    spark = get_spark_session()
-
-    build_customer_analytics(spark)
-
-
-if __name__ == "__main__":
-    main()
