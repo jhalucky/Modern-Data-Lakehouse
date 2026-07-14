@@ -7,7 +7,6 @@ def build_product_analytics(spark):
 
     products = read_silver(spark, "products")
     order_items = read_silver(spark, "order_items")
-    orders = read_silver(spark, "orders")
     reviews = read_silver(spark, "reviews")
     categories = read_silver(spark, "categories")
 
@@ -39,7 +38,7 @@ def build_product_analytics(spark):
 
         .agg(
            count("order_item_id")
-           .alias("total_sales"),
+           .alias("units_sold"),
 
            sum("price")
            .alias("total_revenue"),
@@ -55,7 +54,6 @@ def build_product_analytics(spark):
 
     print("Product Analysis done!")
 
-    product_gold.show(10)
     return product_gold
 
 def main():
