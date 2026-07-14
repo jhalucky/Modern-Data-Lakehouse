@@ -1,7 +1,7 @@
 from src.gold.read_silver import read_silver
 from src.spark.spark_session import get_spark_session
 
-from pyspark.sql.functions import to_date, countDistinct, sum, avg, col
+from pyspark.sql.functions import to_date, countDistinct, sum, avg, col, round
 
 def build_sales_analytics(spark):
 
@@ -38,10 +38,10 @@ def build_sales_analytics(spark):
             countDistinct("customer_id")
             .alias("total_customers"),
 
-            sum("payment_value")
+            round(sum("payment_value"), 2)
             .alias("total_revenue"),
 
-            avg("payment_value")
+            round(avg("payment_value"), 2)
             .alias("average_order_value")
         )
 
@@ -49,7 +49,7 @@ def build_sales_analytics(spark):
     )
 
     print("Order analysis done successfully")
-    order_gold.show(5)
+    
 
     return order_gold
 
