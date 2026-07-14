@@ -1,7 +1,7 @@
-def fill_nulls(df):
+def fill_nulls(df, fill_values):
 
-    df =  df.na.fill("Unknown")
+    df = df.fillna(fill_values)
 
-    print("Filled Null values with unknown")
+    print("Null values filled.")
 
     return df

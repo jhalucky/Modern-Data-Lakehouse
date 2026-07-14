@@ -1,5 +1,6 @@
 from src.config.aws_config import BRONZE_PATH
 from src.ingestion.read_csv import read_csv
+from src.spark.spark_session import get_spark_session
 
 def load_bronze_tables(spark):
 
@@ -15,4 +16,17 @@ def load_bronze_tables(spark):
         "geolocation": read_csv(spark, BRONZE_PATH+"geolocation.csv")
     }
 
+
+
     return datasets
+
+spark = get_spark_session()
+reviews = read_csv(spark, BRONZE_PATH + "reviews.csv")
+
+reviews.printSchema()
+
+reviews.select(
+    "review_comment_message",
+    "review_creation_date",
+    "review_answer_timestamp"
+).show(20, truncate=False)

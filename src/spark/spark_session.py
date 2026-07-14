@@ -20,6 +20,10 @@ def get_spark_session():
             "spark.sql.catalog.spark_catalog",
             "org.apache.spark.sql.delta.catalog.DeltaCatalog"
         )
+        .config(
+            "spark.delta.logStore.class",
+            "org.apache.spark.sql.delta.storage.S3SingleDriverLogStore"
+        )
 
         # S3
         .config(
