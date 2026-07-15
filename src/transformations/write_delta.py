@@ -4,8 +4,6 @@ def write_Delta(df: DataFrame, path: str):
 
     print(f"\nWriting -> {path}")
 
-    df.printSchema()
-
     (
         df.write
           .format("delta")
