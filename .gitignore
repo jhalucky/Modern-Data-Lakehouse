@@ -20,4 +20,4 @@ metastore_db/
 
 *.crc
 
-lucky-data-engineer_credentials.csv
+*lucky-data-engineer_credentials.csv
