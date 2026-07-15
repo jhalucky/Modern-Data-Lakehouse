@@ -20,7 +20,3 @@ def publish_customer_analytics(spark):
 
     print("Customer analytics published.")
 
-
-if __name__ == "__main__":
-    spark = get_spark_session()
-    publish_customer_analytics(spark)

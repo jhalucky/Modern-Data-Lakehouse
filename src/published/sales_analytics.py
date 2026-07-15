@@ -22,6 +22,3 @@ def publish_sales_analytics(spark):
     print("Sales analytics published.")
 
 
-if __name__=="__main__":
-    spark = get_spark_session()
-    publish_sales_analytics(spark)

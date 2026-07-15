@@ -21,6 +21,3 @@ def publish_seller_analytics(spark):
 
 
 
-if __name__ == "__main__":
-    spark = get_spark_session()
-    publish_seller_analytics(spark)

@@ -19,7 +19,3 @@ def publish_clv_analytics(spark):
 
     print("CLV analytics published")
 
-
-if __name__ == "__main__":
-    spark = get_spark_session()
-    publish_clv_analytics(spark)

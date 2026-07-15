@@ -18,6 +18,3 @@ def publish_product_analytics(spark):
     print("Product analytics published")
 
 
-if __name__ == "__main__":
-    spark = get_spark_session()
-    publish_product_analytics(spark)
