@@ -17,7 +17,7 @@ def publish_seller_analytics(spark):
         PUBLISHED_PATH+"seller_analytics"
     )
 
-    print("Seller analysis published!")
+    print("Seller analytics published!")
 
 
 
