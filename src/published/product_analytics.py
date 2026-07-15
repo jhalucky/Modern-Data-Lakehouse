@@ -3,7 +3,7 @@ from src.published.read_gold import read_gold
 from src.transformations.write_parquet import write_parquet
 from src.config.aws_config import PUBLISHED_PATH
 
-def publish_build_analytics(spark):
+def publish_product_analytics(spark):
 
     product_gold = read_gold(
         spark,
@@ -20,4 +20,4 @@ def publish_build_analytics(spark):
 
 if __name__ == "__main__":
     spark = get_spark_session()
-    publish_build_analytics(spark)
+    publish_product_analytics(spark)
