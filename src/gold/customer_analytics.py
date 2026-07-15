@@ -17,13 +17,13 @@ def build_customer_analytics(spark):
     payments = read_silver(spark, "payments")
 
 
-    customer_orders = customers.join(
+    customer_data = customers.join(
         orders,
         on="customer_id",
         how="left"
     )
 
-    customer_transactions = customer_orders.join(
+    customer_transactions = customer_data.join(
         payments,
         on="order_id",
         how="left"

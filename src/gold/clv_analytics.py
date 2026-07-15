@@ -58,7 +58,7 @@ def build_clv_analytics(spark):
         .otherwise("Platinum")
     )
 
-    clv_gold.show(5)
+    
     print("Analysis done")
     return clv_gold
 
