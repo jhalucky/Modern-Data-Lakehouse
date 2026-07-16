@@ -41,11 +41,7 @@ def get_spark_session():
     )
 
     spark = configure_spark_with_delta_pip(
-        builder,
-        extra_packages=[
-            "org.apache.hadoop:hadoop-aws:3.4.2",
-            "software.amazon.awssdk:bundle:2.31.65"
-        ]
-    ).getOrCreate()
+        builder
+        ).getOrCreate()
 
     return spark
