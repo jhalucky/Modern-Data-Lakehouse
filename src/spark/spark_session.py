@@ -11,37 +11,45 @@ def get_spark_session():
         .appName(APP_NAME)
         .master(MASTER)
 
-        # Delta
+        .config(
+            "spark.jars.packages",
+            ",".join([
+                "io.delta:delta-spark_2.13:4.0.0",
+                "org.apache.hadoop:hadoop-aws:3.4.2",
+                "software.amazon.awssdk:bundle:2.31.65"
+            ])
+        )
+
         .config(
             "spark.sql.extensions",
             "io.delta.sql.DeltaSparkSessionExtension"
         )
+
         .config(
             "spark.sql.catalog.spark_catalog",
             "org.apache.spark.sql.delta.catalog.DeltaCatalog"
         )
-        .config(
-            "spark.delta.logStore.class",
-            "org.apache.spark.sql.delta.storage.S3SingleDriverLogStore"
-        )
 
-        # S3
         .config(
             "spark.hadoop.fs.s3a.impl",
             "org.apache.hadoop.fs.s3a.S3AFileSystem"
         )
+
         .config(
             "spark.hadoop.fs.s3a.endpoint",
             "s3.amazonaws.com"
         )
+
         .config(
             "spark.hadoop.fs.s3a.aws.credentials.provider",
             "software.amazon.awssdk.auth.credentials.DefaultCredentialsProvider"
         )
     )
 
-    spark = configure_spark_with_delta_pip(
-        builder
-        ).getOrCreate()
+    spark = configure_spark_with_delta_pip(builder, 
+        extra_packages=[
+            "org.apache.hadoop:hadoop-aws:3.3.4",
+            "com.amazonaws:aws-java-sdk-bundle:1.12.262"
+    ]).getOrCreate()
 
     return spark

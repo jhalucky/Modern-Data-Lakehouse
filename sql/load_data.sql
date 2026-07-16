@@ -1,0 +1,24 @@
+COPY INTO CUSTOMER_ANALYTICS
+FROM @published_stage/customer_analytics
+PATTERN='.*\\.parquet'
+MATCH_BY_COLUMN_NAME=CASE_INSENSITIVE;
+
+COPY INTO PRODUCT_ANALYTICS
+FROM @published_stage/product_analytics
+PATTERN='.*\\.parquet'
+MATCH_BY_COLUMN_NAME=CASE_INSENSITIVE;
+
+COPY INTO SALES_ANALYTICS
+FROM @published_stage/sales_analytics
+PATTERN='.*\\.parquet'
+MATCH_BY_COLUMN_NAME=CASE_INSENSITIVE;
+
+COPY INTO SELLER_ANALYTICS
+FROM @published_stage/seller_analytics
+PATTERN='.*\\.parquet'
+MATCH_BY_COLUMN_NAME=CASE_INSENSITIVE;
+
+COPY INTO CLV_ANALYTICS
+FROM @published_stage/clv_analytics
+PATTERN='.*\\.parquet'
+MATCH_BY_COLUMN_NAME=CASE_INSENSITIVE;
